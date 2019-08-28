@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../layui/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../layui/layui.js"></script>
+</head>
+<body>
+<form class="layui-form" action="/CRUD/add" id="from">
+    <div class="layui-form layui-form-pane demoTable">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择框</label>
+            <div class="layui-input-block">
+                <select name="kemu" lay-verify="required">
+                    <option value=""></option>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                    <option value="前端">前端</option>
+                    <option value="C">C#</option>
+                    <option value="C++">C++</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">题目名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="coursename" required lay-verify="required" placeholder="请输入题目名称"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">标准答案</label>
+            <div class="layui-input-block">
+                <input type="text" name="answer" required lay-verify="required" placeholder="请输入标准答案"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">考点</label>
+            <div class="layui-input-block">
+                <input type="text" name="kaodian" required lay-verify="required" placeholder="请输入考点名称"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单选框</label>
+            <div class="layui-input-block">
+                <input type="radio" name="Qtype" value="选择题" title="选择题" checked>
+                <input type="radio" name="Qtype" value="判断题" title="判断题">
+                <input type="radio" name="Qtype" value="填空题" title="填空题">
+                <input type="radio" name="Qtype" value="简答题" title="简答题">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn " lay-submit lay-filter="formDemo">立即提交</button>
+                <a href="back">
+                    <button class="layui-btn layui-btn-primary " type="reset" id="reset">重置</button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</form>
+<script>
+    layui.use('form', function () {
+        var form = layui.form;
+        //监听提交
+        form.on('submit(formDemo)', function () {
+            $.ajax({
+                url: '/CRUD/add',
+                type: 'POST',
+                dataType: 'JSON',
+                data: $("#from").serialize(),
+                success: function (msg) {
+                    if (msg === 1) {
+                        layer.closeAll('loading');
+                        layer.load(2);
+                        setTimeout(function () {
+                            layer.msg("录入成功", {icon: 6});
+                        },2000);
+                        layer.closeAll();//关闭所有的弹出层
+                    } else {
+                        layer.msg("录入失败", {icon: 5});
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
