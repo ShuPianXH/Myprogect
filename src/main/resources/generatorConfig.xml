@@ -10,10 +10,7 @@
     <javaModelGenerator targetPackage="com.woniuxy.pojo" targetProject="Myprogect" ></javaModelGenerator>
     <sqlMapGenerator targetPackage="com.woniuxy.mapper" targetProject="Myprogect" ></sqlMapGenerator>
     <javaClientGenerator targetPackage="com.woniuxy.mapper" targetProject="Myprogect" type="XMLMAPPER" />
-    <table schema="" tableName="role" ></table>
-    <table schema="" tableName="roletree" ></table>
-    <table schema="" tableName="userinfo" ></table>
-    <table schema="" tableName="userinforole" ></table>
+    <table schema="" tableName="tree" ></table>
   </context>
 </generatorConfiguration>
   
