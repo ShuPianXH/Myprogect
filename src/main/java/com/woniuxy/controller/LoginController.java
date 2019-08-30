@@ -10,20 +10,18 @@ import com.woniuxy.pojo.Userinfo;
 import com.woniuxy.service.IUserinfoService;
 
 @Controller
-@RequestMapping("/pages")
 public class LoginController {
 
 	@Resource
 	private IUserinfoService userinfoServiceImpl;
 	
 	@RequestMapping("/finduser")
-	private String login(Userinfo user,ModelMap map) {
-		Userinfo users = userinfoServiceImpl.login(user);
-		if(users!=null) {
-			map.put("users", user);
-			return "index";
-		}else {
-			return "/pages/login";
+	private String login(String uname,String upass,ModelMap map) {
+		Userinfo users = userinfoServiceImpl.login(uname);
+		if(users.getUpass().equals(upass)) {
+			
 		}
+		return null;
+		
 	}
 }

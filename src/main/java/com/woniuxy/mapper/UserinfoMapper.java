@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 public interface UserinfoMapper {
 	
-	Userinfo login(Userinfo user);
+	Userinfo login(String uname);
 	
     int countByExample(UserinfoExample example);
 

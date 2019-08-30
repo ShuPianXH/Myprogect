@@ -15,9 +15,9 @@ public class UserinfoServiceImpl implements IUserinfoService {
 	private UserinfoMapper userinfoMapper;
 
 	@Override
-	public Userinfo login(Userinfo user) {
+	public Userinfo login(String uname) {
 		
-		return userinfoMapper.login(user);
+		return userinfoMapper.login(uname);
 	}
 
 }
