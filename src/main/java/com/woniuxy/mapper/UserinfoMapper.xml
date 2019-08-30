@@ -8,6 +8,9 @@
     <result column="cid" property="cid" jdbcType="INTEGER" />
     <result column="isdelete" property="isdelete" jdbcType="BIT" />
   </resultMap>
+  <select id="login" resultMap="BaseResultMap">
+	select * from userinfo where uname=#{uname} and upass=#{upass}  	
+  </select>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

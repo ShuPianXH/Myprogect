@@ -6,6 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface UserinfoMapper {
+	
+	Userinfo login(Userinfo user);
+	
     int countByExample(UserinfoExample example);
 
     int deleteByExample(UserinfoExample example);
