@@ -203,13 +203,12 @@
                                 layer.load(2);
                                 layer.closeAll('loading');
                                 layer.closeAll();//关闭所有的弹出层
-
+                                layer.msg("修改成功", {icon: 6});
                                 setTimeout(function () {
                                     obj.update({
                                         title: massage.field.subject,
                                         kemu: massage.field.type
                                     });
-                                    layer.msg("修改成功", {icon: 6});
                                 }, 1000);
                             } else {
                                 layer.msg("修改失败", {icon: 5});

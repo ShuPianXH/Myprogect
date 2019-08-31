@@ -11,7 +11,7 @@
 
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">蜗牛考试系统</div>
+        <div class="layui-logo" style="font-size: 25px">蜗牛考试系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="">题库</a></li>
@@ -30,7 +30,7 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    肖虎
+                    <span id="uName"></span>
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="">基本资料</a></dd>
@@ -80,6 +80,21 @@
 </div>
 <script>
     //JavaScript代码区域
+
+    $(document).ready(function () {
+       $.ajax({
+           url:"/Login/getName",
+           type:"post",
+           success:function (data) {
+               if (data==null){
+                   $("#uName").html("游客");
+               }else {
+                   $("#uName").html(data)
+               }
+
+           }
+       })
+    });
     layui.use('element', function(){
         var element = layui.element;
 
